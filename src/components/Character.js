@@ -1,12 +1,6 @@
 // Write your Character component here
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-
-const StyledCharacterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledCharacter = styled.div`
   width: 80%;
@@ -24,34 +18,22 @@ const StyledTitle = styled.div`
   justify-content: space-between;
 `;
 
-const Characters = ({ characters }) => {
-  const [expand, setExpand] = useState(false);
-
-  const toggleExpand = () => {
-    setExpand(!expand);
-  };
-
+const Character = ({ character, onClick, isExpanded }) => {
   return (
-    <StyledCharacterContainer>
-      {characters.map((character) => {
-        return (
-          <StyledCharacter>
-            <StyledTitle>
-              <h2>{character.name}</h2>
-              <h2 onClick={toggleExpand}>+</h2>
-            </StyledTitle>
-            {expand && (
-              <div>
-                <p>Born: {character.birth_year} </p>
-                <p>Height: {character.height}</p>
-                <p>Skin Color: {character.skin_color}</p>
-              </div>
-            )}
-          </StyledCharacter>
-        );
-      })}
-    </StyledCharacterContainer>
+    <StyledCharacter onClick={onClick}>
+      <StyledTitle>
+        <h2>{character.name}</h2>
+        <h2>+</h2>
+      </StyledTitle>
+      {isExpanded ? (
+        <div>
+          <p>Born: {character.birth_year} </p>
+          <p>Height: {character.height}</p>
+          <p>Skin Color: {character.skin_color}</p>
+        </div>
+      ) : null}
+    </StyledCharacter>
   );
 };
 
-export default Characters;
+export default Character;

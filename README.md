@@ -92,4 +92,4 @@ Props (or Properties) are arguments that are passed from parent to children(gran
 
 4. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
 
-Side effects are very common and side effects are anything that affects something outside of the scope of the function being executed. The Effect hook allows you to sync side effects in function components.
+Side effects are very common and are anything that affects something outside of the scope of the function being executed. The Effect hook allows you to sync side effects in function components.

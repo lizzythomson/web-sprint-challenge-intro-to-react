@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import Characters from "./components/Character";
+import Characters from "./components/Characters";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
