@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import Characters from "./components/Character";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -29,18 +30,7 @@ const App = () => {
         <h2>Loading...</h2>
       ) : (
         <div className="Character-Container">
-          {characters.map((character) => {
-            return (
-              <div>
-                <h2>{character.name}</h2>
-                <p className="expandButton">Born: {character.birth_year}</p>
-                <p className="expandButton">Height: {character.height}</p>
-                <p className="expandButton">
-                  Skin Color: {character.skin_color}
-                </p>
-              </div>
-            );
-          })}
+          <Characters characters={characters} />
         </div>
       )}
     </div>
