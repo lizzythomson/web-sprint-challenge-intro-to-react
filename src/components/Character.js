@@ -1,5 +1,5 @@
 // Write your Character component here
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledCharacterContainer = styled.div`
@@ -25,6 +25,12 @@ const StyledTitle = styled.div`
 `;
 
 const Characters = ({ characters }) => {
+  const [expand, setExpand] = useState(false);
+
+  const toggleExpand = () => {
+    setExpand(!expand);
+  };
+
   return (
     <StyledCharacterContainer>
       {characters.map((character) => {
@@ -32,11 +38,15 @@ const Characters = ({ characters }) => {
           <StyledCharacter>
             <StyledTitle>
               <h2>{character.name}</h2>
-              <h2>+</h2>
+              <h2 onClick={toggleExpand}>+</h2>
             </StyledTitle>
-            <p className="expandButton">Born: {character.birth_year} </p>
-            <p className="expandButton">Height: {character.height}</p>
-            <p className="expandButton">Skin Color: {character.skin_color}</p>
+            {expand && (
+              <div>
+                <p>Born: {character.birth_year} </p>
+                <p>Height: {character.height}</p>
+                <p>Skin Color: {character.skin_color}</p>
+              </div>
+            )}
           </StyledCharacter>
         );
       })}
